@@ -27,28 +27,14 @@ if (window.matchMedia("(min-width:576px)").matches) {
 }
 
 
-
-var xhr = new XMLHttpRequest();
-
-xhr.open('GET', '../img/Dominar-o-Tráfego-Orgânico-no-Instagram.pdf/arquivo.pdf', true);
-
-xhr.responseType = 'blob';
-
-
- xhr.onload = function(e) {
-if (this.status == 200) {
-var blob = new Blob([xhr.response], {type: 'application/pdf'});
-var downloadUrl = URL.createObjectURL(blob);
-var a = document.createElement("a");
-a.style.display = 'none';
-a.href = downloadUrl;
-a.download = 'arquivo.pdf';
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-URL.revokeObjectURL(downloadUrl);
+if  (  !  Modernizr . adownload  )  {
+  var  $link  =  $ ( ' a ' );
+	$link . cada ( função ()  {
+		var  $ download  =  $ ( este ). attr ( ' baixar ' );
+	
+		if  ( typeof  $download  !==  typeof  indefinido  &&  $download  !==  false )  {
+      var  $el  =  $ ( ' <div> ' ). addClass ( ' instrução de download ' ). text ( ' Clique com o botão direito e selecione "Baixar arquivo vinculado" ' );
+      $el . inserirDepois ( $ ( isto ));
+		}
+	});
 }
-};
-
-
- xhr.send();
